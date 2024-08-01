@@ -1,6 +1,6 @@
 def send_email(message, recipient, sender='university.help@gmail.com'):
-    if ('@' not in recipient and '@' not in sender) or sum(
-            [recipient.count(b) + sender.count(b) for b in ('.com', '.ru', 'net',)]) != 2:
+    if ('@' not in recipient and '@' not in sender) or \
+            sum([recipient[-4:].count(b) + sender[-4:].count(b)+sender[-3:].count(b)+recipient[-3:].count(b) for b in ('.com', '.ru', '.net',)]) != 2:
         print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
     elif sender == recipient:
         print("Нельзя отправить письмо самому себе!")
